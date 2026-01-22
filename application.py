@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect
 import mysql.connector
 
-app = Flask(__name__)  # rename from 'application' to 'app'
+application = Flask(__name__)  # <-- Rename from 'app' to 'application'
 
 def get_db_connection():
     conn = mysql.connector.connect(
@@ -12,7 +12,7 @@ def get_db_connection():
     )
     return conn
 
-@app.route('/')
+@application.route('/')
 def index():
     conn = get_db_connection()
     cursor = conn.cursor()
@@ -22,7 +22,7 @@ def index():
     conn.close()
     return render_template('index.html', users=users)
 
-@app.route('/add', methods=['GET', 'POST'])
+@application.route('/add', methods=['GET', 'POST'])
 def add_user():
     if request.method == 'POST':
         name = request.form['name']
@@ -37,5 +37,5 @@ def add_user():
     return render_template('add_user.html')
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
+    application.run(debug=True, host='0.0.0.0')
 
