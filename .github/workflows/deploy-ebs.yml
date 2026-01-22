@@ -24,8 +24,16 @@ jobs:
         pip install -r requirements.txt
 
     - name: Zip application
-      run: zip -r project5-app.zip application.py templates static requirements.txt
+      run: zip -r project5-app.zip application.py templates requirements.txt
 
     - name: Deploy to Elastic Beanstalk
       uses: einaregilsson/beanstalk-deploy@v21
+      with:
+        aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        application_name: project5-app
+        environment_name: Project5-app-env
+        region: us-east-1
+        version_label: v-${{ github.run_number }}
+        zip_file: project5-app.zip
 
