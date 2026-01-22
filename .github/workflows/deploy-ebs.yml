@@ -35,5 +35,6 @@ jobs:
         environment_name: Project5-app-env
         region: us-east-1
         version_label: v-${{ github.run_number }}
-        zip_file: project5-app.zip
+        deployment_package: project5-app.zip
+        wait_for_deployment: true
 
