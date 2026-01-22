@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect
 import mysql.connector
 
-app = Flask(__name__)
+application = Flask(__name__)
 
 def get_db_connection():
     conn = mysql.connector.connect(
@@ -37,4 +37,4 @@ def add_user():
     return render_template('add_user.html')
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
+    application.run(debug=True, host='0.0.0.0')
