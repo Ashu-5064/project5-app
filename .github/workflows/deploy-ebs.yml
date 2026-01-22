@@ -27,5 +27,5 @@ jobs:
       run: zip -r project5-app.zip application.py templates static requirements.txt
 
     - name: Deploy to Elastic Beanstalk
-      uses: einaregilsson/beans
+      uses: einaregilsson/beanstalk-deploy@v21
 
